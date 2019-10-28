@@ -1,0 +1,510 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial;
+}
+
+.header-top {
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+/* .header-top与.main-nav之间的空格是后代选择器 */
+
+.header-top .main-nav {
+    float: right;
+    position: relative;
+}
+
+.main-nav ul {
+    margin-right: 10px;
+}
+
+/* 方式1： */
+
+/* .sep{
+    float: right;
+    width: 20px;
+    text-align: center;
+    color: #ccc;
+    font-weight: 100;
+    font-size: 14px;
+} */
+
+/* ::伪对象选择器 */
+
+.header-top .main-nav::after {
+    content: "|";
+    float: right;
+    font-size: 14px;
+    font-weight: 100;
+    color: #ccc;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.header-top .login-info {
+    float: right;
+}
+
+.login-info div {
+    margin: 0 20px;
+}
+
+.login {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    /* 此处的 position: relative 并不是为了让.login进行定位，而是给.box做参照物。*/
+    position: relative;
+}
+
+/* :hover鼠标悬浮时执行。 */
+
+.login:hover .box {
+    display: block;
+    position: absolute;
+    left: -5px;
+    top: 33px;
+}
+
+.login .box {
+    width: 70px;
+    display: none;
+    /* border: 1px solid #ccc; */
+    /* 参数1： 水平偏移值。 参数2：垂直偏移值。参数3：模糊值。参数4：外延值。参数5：颜色。参数6：是否是外阴影，默认是外阴影，inset内阴影。 */
+    box-shadow: 0 0 2px 0 #ddd;
+}
+
+.login .box a {
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.login .box li {
+    text-align: left;
+    padding-left: 10px;
+    height: 28px;
+    line-height: 28px;
+}
+
+.login .box li:hover {
+    background-color: #3388FF;
+}
+
+.login .box li:hover a {
+    color: #fff;
+}
+
+.login .box ul {
+    list-style: none;
+}
+
+.client {
+    display: inline-block;
+    position: relative;
+}
+
+.client:hover .box {
+    display: block;
+    position: absolute;
+    right: -22px;
+    top: 33px;
+}
+
+.client .box {
+    display: none;
+}
+
+.client .box img {
+    width: 100px;
+    height: 100px;
+}
+
+.main-nav ul {
+    list-style: none;
+}
+
+.main-nav ul li {
+    float: left;
+    padding: 0 10px;
+}
+
+.top a {
+    font-size: 13px;
+    font-weight: bold;
+    color: #222;
+}
+
+.login-info a {
+    font-weight: normal;
+}
+
+.top a.active {
+    text-decoration: none;
+    color: #666;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+}
+
+.header-bottom {
+    background-color: #01204f;
+    height: 40px;
+    line-height: 40px;
+}
+
+.header-bottom .container {
+    width: 984px;
+    margin: 0 auto;
+}
+
+.header-bottom .container ul {
+    list-style-type: none;
+}
+
+.header-bottom .container ul li {
+    float: left;
+}
+
+.header-bottom .container ul li a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    height: 40px;
+    padding: 0 15px;
+}
+
+.header-bottom .container ul li a:hover {
+    background-color: #cc0000;
+}
+
+.header-middle .container {
+    width: 984px;
+    margin: 0 auto;
+    display: flex;
+    height: 90px;
+}
+
+.header-middle .container .left-logo {
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-middle .container .left-logo img {
+    width: 135px;
+    height: 45px;
+    position: relative;
+    top: -8px;
+}
+
+.header-middle .container .right-search {
+    width: 75%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.header-middle .container .right-search .search {
+    border: 1px solid #b8b8b8;
+    border-right: none;
+    padding: 8px 0;
+}
+
+.search-focus {
+    border-color: #38f !important;
+}
+
+.header-middle .container .right-search .search input {
+    border: none;
+    /* 轮廓线：边框外部的一条线，不占元素宽高 */
+    outline: none;
+    padding-left: 5px;
+    width: 450px;
+    margin-left: 2px;
+}
+
+.header-middle .container .right-search .btn {
+    padding: 8px 20px;
+    background-color: #38f;
+}
+
+.header-middle .container .right-search .btn:hover {
+    background-color: #36f;
+    box-shadow: 0 0 2px 1px #ddd;
+}
+
+.header-middle .container .right-search .btn:hover button {
+    background-color: #36f;
+}
+
+.header-middle .container .right-search .btn button {
+    background-color: #38f;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+.header-middle .container .right-search .help {
+    margin-left: 30px;
+    font-size: 13px;
+    color: #222;
+}
+
+.main {
+    width: 984px;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-family: 微软雅黑;
+}
+
+.main .hot {
+    display: flex;
+}
+
+.hot .left {
+    width: 410px;
+    padding-right: 20px;
+}
+
+.hot .left .title {
+    border-bottom: 1px solid rgb(229, 229, 229);
+}
+
+.hot .left .title h2 {
+    border-bottom: 2px solid #2f63ba;
+    float: left;
+    font-size: 18px;
+    padding: 5px 20px;
+    color: #2f63ba;
+}
+
+.hot .left .content ul {
+    list-style: none;
+}
+
+.hot .left .content ul.first {
+    margin-top: 15px;
+}
+
+.hot .left .content ul li {
+    line-height: 28px;
+}
+
+.hot .left .content ul li .dot {
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    background-color: #38f;
+    margin-right: 7px;
+    position: relative;
+    top: -3px;
+}
+
+.hot .left .content ul li.first .dot {
+    width: 4px;
+    height: 4px;
+    background-color: #da4453;
+}
+
+.hot .left .content ul.first li .dot {
+    width: 5px;
+    height: 5px;
+    background-color: #da4453;
+}
+
+.hot .left .content ul li a {
+    color: #222;
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.hot .left .content ul.first li a {
+    font-size: 16px;
+}
+
+.hot .left .content ul li a:hover {
+    text-decoration: underline;
+}
+
+.hot .left .content ul.first li.first a {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.hot .left .content ul.first li.second a {
+    font-weight: 700;
+}
+
+.hot .left .content ul li.first a {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.hot .right {
+    width: calc(100% - 430px);
+}
+
+.hot .right .swiper {
+    position: relative;
+    height: 305px;
+}
+
+.hot .right .swiper .imgs {
+    font-size: 0;
+    position: relative;
+}
+
+.hot .right .swiper .imgs img {
+    width: 555px;
+    height: 305px;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.hot .right .swiper .prev {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 123px;
+    left: 20px;
+}
+
+.hot .right .swiper .next {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 123px;
+    right: 20px;
+}
+
+.hot .right .swiper .icon-wrap {
+    display: inline-block;
+    width: 80%;
+    height: 80%;
+    position: relative;
+}
+
+.hot .right .swiper .next .icon-wrap {
+    transform: rotate(180deg);
+}
+
+.hot .right .swiper .icon-wrap::before, .hot .right .swiper .icon-wrap::after {
+    content: " ";
+    position: absolute;
+    left: 25%;
+    width: 3px;
+    height: 50%;
+    background: #fff;
+    transition: transform .3s, background-color .3s;
+    backface-visibility: hidden
+}
+
+.hot .right .swiper .icon-wrap::before {
+    transform: translateX(-50%) rotate(30deg);
+    transform-origin: 0 100%
+}
+
+.hot .right .swiper .icon-wrap::after {
+    top: 50%;
+    transform: translateX(-50%) rotate(-30deg);
+    transform-origin: 0 0;
+}
+
+.hot .right .swiper .prev::before, .hot .right .swiper .next::before {
+    content: " ";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform .3s, opacity .3s;
+    transform: scale(0.9);
+}
+
+.hot .right .swiper .prev:hover::before, .hot .right .swiper .next:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hot .right .swiper a:hover .icon-wrap::before, .hot .right .swiper a:hover .icon-wrap::after {
+    background: #c00;
+}
+
+.hot .right .swiper a:hover .icon-wrap::before {
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.hot .right .swiper a:hover .icon-wrap::after {
+    transform: translateX(-50%) rotate(-45deg);
+}
+
+.hot .right .swiper .titles-pagers {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    background: linear-gradient(transparent, #222);
+    padding: 10px 0;
+}
+
+.hot .right .swiper .titles-pagers .title {
+    width: calc(100% - 150px);
+}
+
+.hot .right .swiper .titles-pagers .title strong a {
+    color: #fff;
+    font-size: 16px;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.hot .right .swiper .titles-pagers .pager {
+    width: 150px;
+    text-align: right;
+    margin-right: 30px;
+}
+
+.hot .right .swiper .titles-pagers .pager a {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 2px;
+    background-image: url(../img/icon-dot.png);
+    background-repeat: no-repeat;
+    background-position: -25px -6px;
+}
+
+.hot .right .swiper .titles-pagers .pager a:hover {
+    background-position: 0 0;
+}
+
+.hot .right .swiper .titles-pagers .pager a:hover, .hot .right .swiper .titles-pagers .pager a.active {
+    background-position: -5px -5px;
+    position: relative;
+    top: -1px;
+}
